@@ -25,8 +25,22 @@ if (!defined('WPINC')) {
 //Path to the plugin directory
 define( 'WPBB_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 
-include_once WPBB_PLUGIN_DIR . 'includes/wpbb_main.php';
+// this is a block binding plugin
 
-$wpbb_main = new WPBB_Main();
+function wpbb_register_meta() {
+register_post_meta(
+    "book",
+    "isbn",
+    array(
+        'show_in_rest' => true,
+        'single' => true,
+        'type' => 'string',
+    )
+    
+    );
+
+}
+
+
 
 

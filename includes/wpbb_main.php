@@ -10,17 +10,21 @@ if (!defined('ABSPATH')) {
 
 class WPBB_Main
 {
+    // This class creates a Block Binding plugin
     public function __construct()
     {
-        add_action('init', array($this, 'test'));
+        add_action( 'admin_init', array( $this, 'projectslug_register_meta' ) );
     }
 
-    function test()
-    {
-        echo "Hello World!";
-        die();
-    }
-
+    function projectslug_register_meta() {
+        register_meta( 'post', 'projectslug_meta_key', array(
+            'show_in_rest' => true,
+            'single' => true,
+            'type' => 'string',
+        ) );
+    }   
+  
+        
    
 }
 
